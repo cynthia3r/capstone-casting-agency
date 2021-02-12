@@ -13,7 +13,6 @@ AUTH0_CALLBACK_URL = os.environ['AUTH0_CALLBACK_URL']
 AUTH0_API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
 
 
-
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
@@ -38,6 +37,12 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Methods',
                             'GET,PUT,PATCH,POST,DELETE,OPTIONS')
         return response
+
+    @app.route('/')
+    def index():
+        return jsonify({
+            'message': 'Casting Agency',
+        })
 
     # Movie Routes
     '''
