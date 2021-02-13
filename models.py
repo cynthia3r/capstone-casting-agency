@@ -1,5 +1,7 @@
 from sqlalchemy import Column, String, Integer, DateTime, create_engine
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from datetime import datetime
 import json
 import os
 
@@ -18,7 +20,7 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    db.create_all()
+    #db.create_all()
 
 
 '''
@@ -30,9 +32,9 @@ Movie
 class Movie(db.Model):
     __tablename__ = 'movies'
 
-    id = Column(Integer, primary_key=True)
-    title = Column(String, nullable=False)
-    release_date = Column(DateTime(), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    release_date = db.Column(db.DateTime(), default=datetime.utcnow, nullable=False)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -66,10 +68,10 @@ Actor
 class Actor(db.Model):
     __tablename__ = 'actors'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    gender = Column(String, nullable=False)
-    age = Column(Integer, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    gender = db.Column(db.String, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
 
     def __init__(self, name, gender, age):
         self.name = name

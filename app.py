@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, abort, jsonify
+from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import db, setup_db, Movie, Actor
@@ -16,6 +17,7 @@ AUTH0_API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
+    moment = Moment(app)
     app.secret_key = "mysecretkey"
     setup_db(app)
 
