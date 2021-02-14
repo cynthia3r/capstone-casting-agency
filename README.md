@@ -55,14 +55,14 @@ createdb casting-agency
 createdb casting-agency-test
 ```
 
-## Environment variables
+### Environment variables
  * Run the setup file to create the environment variables.
  * Note: Before running the script, please update the DATABASE_URL as needed based on your local postgres setup.
 ```bash
 source setup.sh
 ```
 
-## Setup initial db and seed data
+### Setup initial db and seed data
  * Run the following commands from the project directory to setup the initial database using migration files
 ```bash
 python manage.py db init
@@ -417,6 +417,46 @@ Other errors are returned as JSON objects in the following format:
 
 ## Heroku deployment
 The Application is deployed on Heroku and can be accessed via the [link](https://udacity-casting-agency-app.herokuapp.com)
+
+## Additional Information on how to deploy your app to Heroku
+
+### Getting Started on Heroku
+Create an account with Heroku [here](https://signup.heroku.com/) and then we need to download the Heroku CLI (Command Line Interface) in order to run commands from the terminal that enable us to create a Heroku application and manage it.
+
+### Heroku configuration
+Create your Heroku app
+```
+heroku create name_of_your_app
+```
+Add git remote for Heroku to local repository
+```
+git remote add heroku heroku_git_url
+```
+Add postgresql add on for our database
+```
+heroku addons:create heroku-postgresql:hobby-dev --app name_of_your_application
+```
+### Configurations in Heroku
+Go to your Heroku Dashboard and access your application's settings. Reveal your config variables and start adding all the required environment variables for your project
+
+### Deploy code to Heroku
+```
+git push heroku main
+```
+### Run migrations
+Once your app is deployed, run migrations:
+```
+heroku run python manage.py db upgrade --app name_of_your_application
+```
+### Troubleshooting
+```
+heroku logs --tail
+```
+### Launch your app
+On Heroku Dashboard, go to your project and click on Open app.
+**Note**: The deployed app for this project is available at the below link:
+https://udacity-casting-agency-app.herokuapp.com/
+
 
 ## Author
 Author name: Sayantani Chaudhuri
