@@ -436,7 +436,7 @@ Add postgresql add on for our database
 ```
 heroku addons:create heroku-postgresql:hobby-dev --app name_of_your_application
 ```
-### Configurations in Heroku
+### Configure environment variables in Heroku
 Go to your Heroku Dashboard and access your application's settings. Reveal your config variables and start adding all the required environment variables for your project
 
 ### Deploy code to Heroku
