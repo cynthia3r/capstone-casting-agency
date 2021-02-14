@@ -11,7 +11,7 @@ AUTH0_BASE_URL = 'https://' + os.environ['AUTH0_DOMAIN']
 AUTH0_CLIENT_ID = os.environ['AUTH0_CLIENT_ID']
 AUTH0_CLIENT_SECRET = os.environ['AUTH0_CLIENT_SECRET']
 AUTH0_CALLBACK_URL = os.environ['AUTH0_CALLBACK_URL']
-AUTH0_API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
+API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
 
 
 def create_app(test_config=None):
@@ -63,7 +63,7 @@ def create_app(test_config=None):
             movies = Movie.query.all()
             return jsonify({
                 'success': True,
-                'movies': [movie.format for movie in movies]
+                'movies': [movie.format() for movie in movies]
             }), 200
         except BaseException:
             abort(404)
@@ -119,7 +119,7 @@ def create_app(test_config=None):
 
             return jsonify({
                 'success': True,
-                'movie': movie.format,
+                'movie': movie.format(),
             })
         except BaseException:
             abort(422)
@@ -209,7 +209,7 @@ def create_app(test_config=None):
             actors = Actor.query.all()
             return jsonify({
                 'success': True,
-                'actors': [actor.format for actor in actors]
+                'actors': [actor.format() for actor in actors]
             }), 200
         except BaseException:
             abort(404)
@@ -266,7 +266,7 @@ def create_app(test_config=None):
 
             return jsonify({
                 'success': True,
-                'actor': actor.format,
+                'actor': actor.format(),
             })
         except BaseException:
             abort(422)

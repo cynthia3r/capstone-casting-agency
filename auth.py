@@ -3,11 +3,11 @@ from flask import request, _request_ctx_stack, abort
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+import os
 
-
-AUTH0_DOMAIN = 'fsnd-domain.au.auth0.com'
+AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
+API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'casting-agency'
 
 # AuthError Exception
 '''
@@ -65,6 +65,7 @@ def get_token_auth_header():
         }, 401)
 
     token = parts[1]
+    print("Authorization Token:", token)
     return token
 
 
@@ -194,12 +195,12 @@ def requires_auth(permission=''):
     def requires_auth_decorator(f):
         @wraps(f)
         def wrapper(*args, **kwargs):
+            token = get_token_auth_header()
             try:
-                token = get_token_auth_header()
-            except BaseException:
-                abort(401)
+                payload = verify_decode_jwt(token)
+            except AuthError as err:
+                abort(401, err.error)
 
-            payload = verify_decode_jwt(token)
             check_permissions(permission, payload)
             return f(payload, *args, **kwargs)
 
