@@ -1,9 +1,9 @@
 # Casting Agency API
 ---------------------------------------------
 ## Overview
-The Casting Agency API is modelled for a company that is responsible for creating movies and managing and assigning actors to those movies. The APIs are designed and developed to help the Executive Producer within the company to create a system to simplify and streamline the movie making process. The application leverages Auth0 to provide JWT Token based authentication and authorization, which uses RBAC (Role Based Access Control) to assign permission based on roles. The API is responsible for checking permissions and handling CRUD operations for Actor and Movie models. Thus only authorized users will be able to avail the Casting Agency API service.
+The Casting Agency API is modelled for a company that is responsible for creating movies and managing and assigning actors to those movies. The application leverages Auth0 to provide JWT Token based authentication and authorization, and uses RBAC (Role Based Access Control) to assign permission based on roles. The API is responsible for checking permissions and handling CRUD operations for Actor and Movie models. Only authorized users will be able to avail the Casting Agency API service.
 
-**Note**: the specification for this capstone project is provided by Udacity and the main objective of this project is to demonstrate all the learned concepts as part of Udacity Full Stack Web Developer Nanodegree program incluing data modelling with `Flask-SQLAlchemy`, API development and testing using `Python Flask`, generation of migration scripts with `Flask-Migrate`, JWT based authentication and authorization with RBAC and API deployment with Heroku. 
+**Note**: the specification for this capstone project is provided by Udacity and the main objective of this project is to demonstrate all the learned concepts as part of Udacity Full Stack Web Developer Nanodegree program including data modelling with `Flask-SQLAlchemy`, API development and testing using `Python Flask`, generation of migration scripts with `Flask-Migrate`, JWT based authentication and authorization with RBAC and API deployment with Heroku. 
 
 The application is deployed on Heroku and can be accessed via the [link](https://udacity-casting-agency-app.herokuapp.com)
 
