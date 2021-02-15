@@ -413,6 +413,17 @@ Other errors are returned as JSON objects in the following format:
 ```
 
 ## Testing
+ * From within the project directory first ensure you are working using your created virtual environment.
+ * Run the setup file to create the environment variables (if not already run in the precceding section).
+ * **Note**: The `setup.sh` will export TEST_DATABASE_URL, Test JWT token for each user as environment variables. 
+
+```bash
+source setup.sh
+```
+Run the unittest using below command
+```
+python test_app.py
+```
 
 
 ## Heroku deployment
