@@ -6,13 +6,6 @@ from flask_cors import CORS
 from models import db, setup_db, Movie, Actor
 from auth import AuthError, requires_auth
 
-AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
-AUTH0_BASE_URL = 'https://' + os.environ['AUTH0_DOMAIN']
-AUTH0_CLIENT_ID = os.environ['AUTH0_CLIENT_ID']
-AUTH0_CLIENT_SECRET = os.environ['AUTH0_CLIENT_SECRET']
-AUTH0_CALLBACK_URL = os.environ['AUTH0_CALLBACK_URL']
-API_AUDIENCE = os.environ['AUTH0_API_AUDIENCE']
-
 
 def create_app(test_config=None):
     # create and configure the app

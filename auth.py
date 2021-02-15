@@ -65,7 +65,6 @@ def get_token_auth_header():
         }, 401)
 
     token = parts[1]
-    print("Authorization Token:", token)
     return token
 
 
